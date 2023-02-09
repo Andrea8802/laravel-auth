@@ -5,7 +5,9 @@
 @if (Auth::check())
 <a href="{{route('project.delete', $project)}}">X</a>
 @endif
-{{$project -> name}}
+<a href="{{route('project.show', $project)}}">
+    {{$project -> name}}
+</a>
     <br>
     <br>
 @endforeach

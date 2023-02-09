@@ -16,7 +16,7 @@ class MainController extends Controller
 
     public function projectShow(Project $project)
     {
-        return view("pages.home", compact('projects'));
+        return view("pages.show", compact('project'));
 
     }
 
@@ -25,5 +25,7 @@ class MainController extends Controller
         $project->delete();
         return redirect()->route('home');
     }
+
+
 
 }
