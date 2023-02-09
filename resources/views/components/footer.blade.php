@@ -1,3 +1,3 @@
-<h1>
-    footer
-</h1>
+<b class="ms_copyright">
+    Copyright&copy; Me.
+</b>
