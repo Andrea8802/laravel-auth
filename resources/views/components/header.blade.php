@@ -24,6 +24,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a>
                     </li>
+                    @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('project.create')}}">
+                        Create Project</a>
+                    </li>
+                    @endauth
                 </ul>
 
                 <!-- Right Side Of Navbar -->

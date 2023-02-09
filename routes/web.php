@@ -21,3 +21,8 @@ require __DIR__ . '/auth.php';
 
 Route::get('/project/delete/{project}', [MainController::class, 'projectDelete'])->name('project.delete');
 Route::get('/project/show/{project}', [MainController::class, 'projectShow'])->name('project.show');
+Route::get('/project/create', [MainController::class, 'projectCreate'])
+    ->middleware(['auth', 'verified'])->name('project.create');
+
+Route::post('/project/store', [MainController::class, 'projectStore'])
+    ->middleware(['auth', 'verified'])->name('project.store');

@@ -26,6 +26,26 @@ class MainController extends Controller
         return redirect()->route('home');
     }
 
+    public function projectCreate()
+    {
+        return view('pages.create');
+    }
 
+    public function projectStore(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|unique:projects|max:64',
+            'description' => 'nullable|string',
+            'main_image' => 'nullable|string|unique:projects',
+            'release_date' => 'nullable|date|before:now',
+            'repo_link' => 'required|string|unique:projects'
+        ]);
+
+        $project = Project::create($data);
+        $project->save();
+
+        return redirect()->route('home');
+
+    }
 
 }

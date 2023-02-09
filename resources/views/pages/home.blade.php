@@ -2,12 +2,15 @@
 @section('content')
 
 @foreach ($projects as $project)
-@if (Auth::check())
+@auth
 <a href="{{route('project.delete', $project)}}">X</a>
-@endif
+@endauth
 <a href="{{route('project.show', $project)}}">
     {{$project -> name}}
 </a>
+@auth
+<a href="">ED</a>
+@endauth
     <br>
     <br>
 @endforeach
