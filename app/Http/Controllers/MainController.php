@@ -9,7 +9,7 @@ class MainController extends Controller
 {
     public function home()
     {
-        $projects = Project::all();
+        $projects = Project::orderBy('release_date', 'desc')->get();
 
         return view("pages.home", compact('projects'));
     }
@@ -46,6 +46,25 @@ class MainController extends Controller
 
         return redirect()->route('home');
 
+    }
+
+    public function projectEdit(Project $project)
+    {
+        return view('pages.edit', compact('project'));
+    }
+
+    public function projectUpdate(Request $request, Project $project)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:64',
+            'description' => 'nullable|string',
+            'main_image' => 'nullable|string',
+            'release_date' => 'nullable|date|before:now',
+            'repo_link' => 'required|string'
+        ]);
+        $project->update($data);
+
+        return redirect()->route('home');
     }
 
 }

@@ -9,7 +9,7 @@
     {{$project -> name}}
 </a>
 @auth
-<a href="">ED</a>
+<a href="{{route('project.edit', $project)}}">ED</a>
 @endauth
     <br>
     <br>

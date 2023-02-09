@@ -14,6 +14,7 @@
 </head>
 <body>
     @include('components.header')
+    @include('components.error')
     @yield('content')
     @include('components.footer')
 </body>
