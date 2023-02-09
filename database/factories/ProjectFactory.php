@@ -20,7 +20,7 @@ class ProjectFactory extends Factory
             'name' => fake()->word(),
             'description' => fake()->boolean()
             ? fake()->text() : NULL,
-            'main_image' => fake()->imageUrl(300, 300, NULL, true),
+            'main_image' => fake()->imageUrl(300, 300, 'Project', true),
             'release_date' => fake()->date(),
             'repo_link' => fake()->url()
 

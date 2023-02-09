@@ -1,1 +1,9 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+.ms_main {
+    margin-top: 40px;
+}
+
+.ms_desc {
+    min-height: 170px;
+}
