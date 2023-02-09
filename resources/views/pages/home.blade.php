@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="container ms_main d-flex
-    justify-content-between flex-wrap gap-5">
+    justify-content-center flex-wrap gap-5">
 
         @foreach ($projects as $project)
         <div class="card" style="width: 18rem;">
@@ -31,7 +31,7 @@
                 <a href="{{route('project.delete', $project)}}" class="btn btn-danger">Remove</a>
               </div>
             @endauth
-            
+
           </div>
         @endforeach
     </div>
