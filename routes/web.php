@@ -18,3 +18,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+Route::get('/project/delete/{project}', [MainController::class, 'projectDelete'])->name('project.delete');

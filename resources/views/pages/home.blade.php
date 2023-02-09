@@ -1,7 +1,12 @@
 @extends('layouts.main-layout')
 @section('content')
 
-<h1>
-    Home
-</h1>
+@foreach ($projects as $project)
+@if (Auth::check())
+<a href="{{route('project.delete', $project)}}">X</a>
+@endif
+{{$project -> name}}
+    <br>
+    <br>
+@endforeach
 @endsection
