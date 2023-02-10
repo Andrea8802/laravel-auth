@@ -17,7 +17,7 @@ class ProjectFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->word(),
+            'name' => fake()->words(2, true),
             'description' => fake()->boolean()
             ? fake()->text() : NULL,
             'main_image' => fake()->imageUrl(300, 300, 'Project', true),
