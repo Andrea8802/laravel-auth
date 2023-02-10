@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Project;
 
 class MainController extends Controller
@@ -36,10 +37,13 @@ class MainController extends Controller
         $data = $request->validate([
             'name' => 'required|string|unique:projects|max:64',
             'description' => 'nullable|string',
-            'main_image' => 'nullable|string|unique:projects',
+            'main_image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'release_date' => 'nullable|date|before:now',
             'repo_link' => 'required|string|unique:projects'
         ]);
+
+        $imgPath = Storage::put('uploads', $data['main_image']);
+        $data['main_image'] = $imgPath;
 
         $project = Project::create($data);
         $project->save();
@@ -58,10 +62,14 @@ class MainController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:64|unique:projects,name,' . $project->id,
             'description' => 'nullable|string',
-            'main_image' => 'nullable|string|unique:projects,main_image,' . $project->id,
+            'main_image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'release_date' => 'nullable|date|before:now',
             'repo_link' => 'required|string|unique:projects,repo_link,' . $project->id
         ]);
+
+        $imgPath = Storage::put('uploads', $data['main_image']);
+        $data['main_image'] = $imgPath;
+
         $project->update($data);
 
         return redirect()->route('home');

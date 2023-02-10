@@ -6,7 +6,7 @@
         @foreach ($projects as $project)
             <div class="card" style="width: 18rem;">
 
-                <img src="{{ $project->main_image }}" class="card-img-top" alt="...">
+                <img src="{{ asset('storage/' . $project->main_image) }}" class="card-img-top ms_card-img" alt="...">
 
                 <div class="card-body">
                     <h5 class="card-title">{{ $project->name }}</h5>
