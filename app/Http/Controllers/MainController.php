@@ -67,8 +67,11 @@ class MainController extends Controller
             'repo_link' => 'required|string|unique:projects,repo_link,' . $project->id
         ]);
 
-        $imgPath = Storage::put('uploads', $data['main_image']);
-        $data['main_image'] = $imgPath;
+        if (array_key_exists("main_image", $data)) {
+
+            $img_path = Storage::put('uploads', $data['main_image']);
+            $data['main_image'] = $img_path;
+        }
 
         $project->update($data);
 
